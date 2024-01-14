@@ -32,7 +32,21 @@ const getTodo = async (req, res) => {
     }
 }
 
+// menampilkan detail sebuah task
+const getDetailTodo = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const data = await Todo.findById(id)
+
+        res.status(200).send(data)
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ message: 'internal server error' })
+    }
+}
+
 module.exports = {
     addTodo,
-    getTodo
+    getTodo,
+    getDetailTodo
 }
