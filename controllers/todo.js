@@ -45,8 +45,45 @@ const getDetailTodo = async (req, res) => {
     }
 }
 
+// cari satu task untuk edit
+const updateTodo = async (req, res) => {
+    try {
+        const { title, description, isDone } = req.body;
+        const { id } = req.params;
+
+        const todoData = {
+            title,
+            description,
+            isDone
+        };
+
+        await Todo.findByIdAndUpdate(id, todoData);
+
+        res.status(201).send({ message: 'Update todo success' })
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ message: 'Internal server error' })
+    }
+}
+
+// hapus task
+const deleteTodo = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        await Todo.findByIdAndDelete(id);
+
+        res.status(200).send({ message: 'Delete todo success' })
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ message: 'Internal server error' })
+    }
+}
+
 module.exports = {
     addTodo,
     getTodo,
-    getDetailTodo
+    getDetailTodo,
+    updateTodo,
+    deleteTodo
 }
