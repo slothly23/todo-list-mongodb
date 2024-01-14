@@ -11,6 +11,7 @@ app.listen(process.env.PORT, () => {
 
 const mongoose = require('mongoose')
 const { user } = require('./routes/auth')
+const { todo } = require('./routes/todo')
 const url = process.env.MONGODB_URI;
 
 mongoose.connect(url)
@@ -21,3 +22,4 @@ db.once('open', () => console.log('connected to mongoose'))
 
 //routes
 app.use(user);
+app.use(todo)
