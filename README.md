@@ -162,7 +162,7 @@ Berikut adalah daftar endpoint API yang tersedia:
 Berikut adalah contoh penggunaan endpoint API dengan menggunakan perangkat lunak seperti [Postman](https://www.postman.com/) atau [curl](https://curl.se/):
 
 - Menambahkan user baru ke database: `POST http://localhost:5000/register`
-- Melakukan login untuk mendapatkan token: `http://localhost:5000/login`
+- Melakukan login untuk mendapatkan token: `POST http://localhost:5000/login`
 - Mendapatkan seluruh tugas: `GET http://localhost:5000/todos`
 - Mendapatkan tugas berdasarkan ID: `GET http://localhost:5000/todos/:id`
 - Menambahkan tugas baru: `POST http://localhost:5000/todos`
