@@ -56,7 +56,7 @@ Berikut adalah daftar endpoint API yang tersedia:
 
 ### POST /login
 
-**Deskripsi:** Endpoint ini digunakan untuk menampilkan seluruh daftar tugas.
+**Deskripsi:** Endpoint ini digunakan untuk mendapatkan token login agar bisa mengakses todo
 
 **Request:**
 
