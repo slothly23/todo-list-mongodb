@@ -74,6 +74,8 @@ Berikut adalah daftar endpoint API yang tersedia:
     }
   ]
   ```
+
+  copy token dan buat key authorization pada headers dan paste token tadi
   
 
 ### GET /todos
