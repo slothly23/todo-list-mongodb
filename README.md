@@ -8,11 +8,13 @@ Repositori ini adalah backend aplikasi manajemen tugas (to-do list) yang dibangu
 - [Instalasi](#instalasi)
 - [Menjalankan Server](#menjalankan-server)
 - [Endpoint API](#endpoint-api)
+  - [POST /register](#post-register)
+  - [POST /login](#post-login)
   - [GET /todos](#get-todos)
-  - [GET /todo/:id](#get-todo-id)
-  - [POST /todo](#post-todo)
-  - [PUT /todo/:id](#put-todo-id)
-  - [DELETE /todo/:id](#delete-todo-id)
+  - [GET /todos/:id](#get-todo-id)
+  - [POST /todos](#post-todo)
+  - [PATCH /todos/:id](#patch-todo-id)
+  - [DELETE /todos/:id](#delete-todo-id)
 - [Contoh Penggunaan](#contoh-penggunaan)
 - [Lisensi](#lisensi)
 
@@ -52,6 +54,28 @@ Server akan berjalan di `http://localhost:3000` secara default. Anda dapat mengo
 
 Berikut adalah daftar endpoint API yang tersedia:
 
+### POST /login
+
+**Deskripsi:** Endpoint ini digunakan untuk menampilkan seluruh daftar tugas.
+
+**Request:**
+
+- **Metode:** POST
+- **URL:** `/login`
+
+**Response:**
+- **Status 200 OK:** Mengembalikan token untuk bisa mengakses todo.
+- **Contoh Respons Sukses:**
+
+  ```json
+  [
+     {
+    "token": "eyJhbGciOiJIUzI1NiJ9.Y29iYTI.HjRtg042hjZdPHsY2lr3yk-YFUBUzOJexxz0EBH8kIE"
+    }
+  ]
+  ```
+  
+
 ### GET /todos
 
 **Deskripsi:** Endpoint ini digunakan untuk menampilkan seluruh daftar tugas.
@@ -63,7 +87,8 @@ Berikut adalah daftar endpoint API yang tersedia:
 
 **Response:**
 
-- **Status 200 OK:** Mengembalikan daftar seluruh tugas dalam format JSON.
+- **Status 401 Unauthorized: Missing token:** belum memasukkan token login pada headers.
+-  **Status 200 OK:** Mengembalikan daftar seluruh tugas dalam format JSON.
 - **Contoh Respons Sukses:**
 
   ```json
@@ -92,6 +117,7 @@ Berikut adalah daftar endpoint API yang tersedia:
 
 **Response:**
 
+- **Status 401 Unauthorized: Missing token:** belum memasukkan token login pada headers.
 - **Status 200 OK:** Mengembalikan tugas yang sesuai dengan ID dalam format JSON.
 - **Status 500 Internal server error:** Jika ID tidak ditemukan.
 
@@ -115,6 +141,7 @@ Berikut adalah daftar endpoint API yang tersedia:
 
 **Response:**
 
+- **Status 401 Unauthorized: Missing token:** belum memasukkan token login pada headers.
 - **Status 201 Add todo succes:** Jika tugas berhasil ditambahkan.
 - **Status 500 Internal server error:** Jika data yang dikirim tidak valid.
 
@@ -139,6 +166,7 @@ Berikut adalah daftar endpoint API yang tersedia:
 
 **Response:**
 
+- **Status 401 Unauthorized: Missing token:** belum memasukkan token login pada headers.
 - **Status 200 Update todo success:** Jika tugas berhasil diubah.
 - **Status 500 Internal server error:** Jika data yang dikirim tidak valid.
 
@@ -154,6 +182,7 @@ Berikut adalah daftar endpoint API yang tersedia:
 
 **Response:**
 
+- **Status 401 Unauthorized: Missing token:** belum memasukkan token login pada headers.
 - **Status 200 Delete todo success:** Jika tugas berhasil dihapus.
 - **Status 500 Internal server error:** Jika ID tidak ditemukan.
 
