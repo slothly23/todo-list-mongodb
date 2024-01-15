@@ -71,9 +71,20 @@ const deleteTodo = async (req, res) => {
     try {
         const { id } = req.params;
 
-        await Todo.findByIdAndDelete(id);
+        await Todo.findByIdAndDelete(id)
 
         res.status(200).send({ message: 'Delete todo success' })
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send({ message: 'Internal server error' })
+    }
+}
+
+//hapus semua task
+const deleteAllTodo = async (req, res) => {
+    try {
+        await Todo.deleteMany({});
+        res.status(200).send({ message: 'All todo deleted'})
     } catch (err) {
         console.log(err.message);
         res.status(500).send({ message: 'Internal server error' })
@@ -85,5 +96,6 @@ module.exports = {
     getTodo,
     getDetailTodo,
     updateTodo,
-    deleteTodo
+    deleteTodo,
+    deleteAllTodo
 }

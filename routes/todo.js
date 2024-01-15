@@ -1,5 +1,5 @@
 const express = require("express")
-const { addTodo, getTodo, getDetailTodo, updateTodo, deleteTodo } = require("../controllers/todo")
+const { addTodo, getTodo, getDetailTodo, updateTodo, deleteTodo, deleteAllTodo } = require("../controllers/todo")
 const app = express()
 
 //express.Router() fungsinya ngebantu kita supaya routernya dibuat sesuai kategori
@@ -10,6 +10,7 @@ todo.get('/todos', getTodo);
 todo.get('/todos/:id', getDetailTodo);
 todo.patch('/todos/:id', updateTodo);
 todo.delete('/todos/:id', deleteTodo);
+todo.delete('/todos', deleteAllTodo);
 
 module.exports = {
     todo
